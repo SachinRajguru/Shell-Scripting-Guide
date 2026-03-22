@@ -15,7 +15,7 @@
 - [11. Complete Sample Shell Script](#11-complete-sample-shell-script)
 - [12. Role of Shell Scripting in DevOps](#12-role-of-shell-scripting-in-devops)
 - [13. Node Health Monitoring](#13-node-health-monitoring)
-- [14. Summary of All Commands](#15-summary-of-all-commands)
+- [14. Summary of All Commands](#14-summary-of-all-commands)
 
 ---
 
@@ -539,23 +539,5 @@ top output:
 | `top` | Monitor processes | `top` |
 | `free` | Memory | `free -h` |
 | `nproc` | CPU cores | `nproc` |
-
-## Practice Lab: Create Your Own Script
-
-```bash
-#!/bin/bash
-# Practice: Complete Automation Script
-
-echo "=== Linux Automation Demo ==="
-mkdir practice_demo
-cd practice_demo
-touch file{1..5}
-chmod 755 *.sh
-ls -ltr
-echo "Automation Complete!"
-pwd
-```
-
-**Execute**: `chmod +x practice.sh && ./practice.sh`
 
 ---
