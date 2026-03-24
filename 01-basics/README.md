@@ -1,5 +1,5 @@
 
-# Shell Scripting Basics - Study Guide
+# Shell Scripting Basics
 
 ## Overview
 This guide covers the fundamentals of shell scripting for DevOps automation. Learn Linux setup, basic commands, file operations, permissions, script execution, and practical DevOps use cases.
@@ -102,9 +102,9 @@ Interview → Answer shell scripting questions confidently
 ```
 01-basics/
 ├── README.md                 # This file
-└── shell-scripting-basics.md # Detailed study guide
+└── 01-shell-scripting-basics.md # Detailed study guide
 ```
 
 ---
 
-**Practice Tip**: Execute every command in a Linux terminal (WSL, AWS EC2, or Docker Ubuntu). Hands-on practice is essential!
+**Pro Tip**: Practice every command in a real Linux terminal (WSL, AWS EC2, or Docker Ubuntu). Theory alone won't stick!

@@ -245,7 +245,7 @@ Shell → bash filename.sh  ← Shebang automates this!
 |-----------|---------------------|--------------|-------|
 | `sh`      | `/bin/sh`           | ⚠️ Variable  | Ubuntu → Links to **dash**<br>Older systems → Linked to **bash** |
 | `bash`    | `/bin/bash`         | ✓ Recommended | Always use for new scripts |
-| `env bash`| `/usr/bin/env bash` | ⭐ **Most Portable** | Finds bash anywhere |
+| `env bash`| `/usr/bin/env bash` | ★ **Most Portable** | Finds bash anywhere |
 
 **Interview Q&A**:
 ```
