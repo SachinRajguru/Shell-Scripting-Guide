@@ -8,7 +8,7 @@ This guide covers the fundamentals of shell scripting for DevOps automation. Lea
 **Prerequisites**: Basic Linux terminal access
 
 ## Table of Contents
-- [Study Guide](./shell-scripting-basics.md)
+- [Study Guide](./01-shell-scripting-basics.md)
 - [Quick Reference Commands](#quick-reference-commands)
 - [Learning Objectives](#learning-objectives)
 - [Practice Exercises](#practice-exercises)
@@ -107,4 +107,4 @@ Interview → Answer shell scripting questions confidently
 
 ---
 
-**Pro Tip**: Practice every command in a real Linux terminal (WSL, AWS EC2, or Docker Ubuntu). Theory alone won't stick!
+**Practice Tip**: Execute every command in a Linux terminal (WSL, AWS EC2, or Docker Ubuntu). Hands-on practice is essential!
