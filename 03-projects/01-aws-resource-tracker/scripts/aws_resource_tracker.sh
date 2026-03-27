@@ -45,72 +45,72 @@ set -x
 # Service-specific resource listing
 case $aws_service in
     ec2)
-        echo "▣ Listing EC2 Instances in $aws_region"
+        echo "📊 Listing EC2 Instances in $aws_region"
         aws ec2 describe-instances --region $aws_region \
             | jq '.Reservations[].Instances[].InstanceId'
         ;;
     rds)
-        echo "▣ Listing RDS Instances in $aws_region"
+        echo "📊 Listing RDS Instances in $aws_region"
         aws rds describe-db-instances --region $aws_region \
             | jq '.DBInstances[].DBInstanceIdentifier'
         ;;
     s3)
-        echo "▣ Listing S3 Buckets (Global)"
+        echo "📊 Listing S3 Buckets (Global)"
         aws s3api list-buckets --region $aws_region \
             | jq -r '.Buckets[].Name'
         ;;
     cloudfront)
-        echo "▣ Listing CloudFront Distributions"
+        echo "📊 Listing CloudFront Distributions"
         aws cloudfront list-distributions --region $aws_region \
             | jq '.DistributionList.Items[].Id'
         ;;
     vpc)
-        echo "▣ Listing VPCs in $aws_region"
+        echo "📊 Listing VPCs in $aws_region"
         aws ec2 describe-vpcs --region $aws_region \
             | jq '.Vpcs[].VpcId'
         ;;
     iam)
-        echo "▣ Listing IAM Users (Global)"
+        echo "📊 Listing IAM Users (Global)"
         aws iam list-users \
             | jq -r '.Users[].UserName'
         ;;
     route53)
-        echo "▣ Listing Route53 Hosted Zones"
+        echo "📊 Listing Route53 Hosted Zones"
         aws route53 list-hosted-zones \
             | jq -r '.HostedZones[].Name'
         ;;
     cloudwatch)
-        echo "▣ Listing CloudWatch Alarms"
+        echo "📊 Listing CloudWatch Alarms"
         aws cloudwatch describe-alarms --region $aws_region \
             | jq -r '.CompositeAlarms[].AlarmName, .MetricAlarms[].AlarmName'
         ;;
     cloudformation)
-        echo "▣ Listing CloudFormation Stacks"
+        echo "📊 Listing CloudFormation Stacks"
         aws cloudformation describe-stacks --region $aws_region \
             | jq -r '.Stacks[].StackName'
         ;;
     lambda)
-        echo "▣ Listing Lambda Functions"
+        echo "📊 Listing Lambda Functions"
         aws lambda list-functions --region $aws_region \
             | jq -r '.Functions[].FunctionName'
         ;;
     sns)
-        echo "▣ Listing SNS Topics"
+        echo "📊 Listing SNS Topics"
         aws sns list-topics --region $aws_region \
             | jq -r '.Topics[].TopicArn'
         ;;
     sqs)
-        echo "▣ Listing SQS Queues"
+        echo "📊 Listing SQS Queues"
         aws sqs list-queues --region $aws_region \
             | jq -r '.QueueUrls[]'
         ;;
     dynamodb)
-        echo "▣ Listing DynamoDB Tables"
+        echo "📊 Listing DynamoDB Tables"
         aws dynamodb list-tables --region $aws_region \
             | jq -r '.TableNames[]'
         ;;
     ebs)
-        echo "▣ Listing EBS Volumes"
+        echo "📊 Listing EBS Volumes"
         aws ec2 describe-volumes --region $aws_region \
             | jq -r '.Volumes[].VolumeId'
         ;;
