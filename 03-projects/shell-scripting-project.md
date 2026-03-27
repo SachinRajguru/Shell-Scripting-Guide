@@ -1,7 +1,7 @@
 
 # **AWS Resource Tracker Shell Script**
 
-## ** Table of Contents**
+## Table of Contents
 1. [Why Cloud Migration?](#why-cloud-migration)
 2. [Core DevOps Responsibility: Cost Optimization](#cost-optimization)
 3. [Project Overview](#project-overview)
@@ -17,7 +17,7 @@
 
 ---
 
-## ** Why Cloud Migration?** {#why-cloud-migration}
+## Why Cloud Migration?
 
 ### **Definition**
 **Cloud Migration** = Moving on-premises infrastructure to cloud providers (AWS, Azure, GCP).
@@ -28,7 +28,7 @@
 | **Maintenance Overhead** | Build data centers, patch servers, security updates, dedicated sysadmin team | Cloud provider handles OS patching, hardware maintenance |
 | **Cost Efficiency** | Pay for servers whether used or not | **Pay-as-you-go** model - pay only for what you use |
 
-### **Real-World Scenario**
+### Real-World Scenario
 ```
 Company: example.com (100 developers)
 Problem: Developers create 100 EC2 instances + unused EBS volumes
@@ -40,12 +40,12 @@ DevOps Solution: Daily resource usage reports
 
 ---
 
-## ** Core DevOps Responsibility: Cost Optimization** {#cost-optimization}
+## Core DevOps Responsibility: Cost Optimization
 
 ### **Definition**
 **Resource Usage Tracking** = Monitoring AWS resources to ensure cost-effectiveness.
 
-### **Common Wasteful Resources**
+### Common Wasteful Resources
 ```
 1. EC2 instances (running but unused)
 2. EBS volumes (created but unattached)
@@ -60,7 +60,7 @@ DevOps Solution: Daily resource usage reports
 
 ---
 
-## ** Project Overview** {#project-overview}
+## Project Overview
 
 ### **Project Name**: `aws_resource_tracker.sh`
 **Purpose**: Automate AWS resource inventory for cost monitoring
@@ -91,7 +91,7 @@ Example: ./aws_resource_tracker.sh us-east-1 ec2
 
 ---
 
-## ** Cron Job Automation** {#cron-job-automation}
+## Cron Job Automation
 
 ### **Definition**
 **Cron Job** = Linux scheduler that automatically executes scripts at specified times.
@@ -118,7 +118,7 @@ Cron Job:
 
 ---
 
-## ** Prerequisites & Setup** {#prerequisites}
+## Prerequisites & Setup
 
 ### **1. AWS CLI Installation & Configuration**
 ```bash
@@ -148,7 +148,7 @@ Bash = Consistent syntax across Linux distributions
 
 ---
 
-## ** Complete Script with Code Walkthrough** {#complete-script}
+## Complete Script with Code Walkthrough
 
 ```bash
 #!/bin/bash
@@ -198,72 +198,72 @@ set -x
 # Service-specific resource listing
 case $aws_service in
     ec2)
-        echo "▣ Listing EC2 Instances in $aws_region"
+        echo "📊 Listing EC2 Instances in $aws_region"
         aws ec2 describe-instances --region $aws_region \
             | jq '.Reservations[].Instances[].InstanceId'
         ;;
     rds)
-        echo "▣ Listing RDS Instances in $aws_region"
+        echo "📊 Listing RDS Instances in $aws_region"
         aws rds describe-db-instances --region $aws_region \
             | jq '.DBInstances[].DBInstanceIdentifier'
         ;;
     s3)
-        echo "▣ Listing S3 Buckets (Global)"
+        echo "📊 Listing S3 Buckets (Global)"
         aws s3api list-buckets --region $aws_region \
             | jq -r '.Buckets[].Name'
         ;;
     cloudfront)
-        echo "▣ Listing CloudFront Distributions"
+        echo "📊 Listing CloudFront Distributions"
         aws cloudfront list-distributions --region $aws_region \
             | jq '.DistributionList.Items[].Id'
         ;;
     vpc)
-        echo "▣ Listing VPCs in $aws_region"
+        echo "📊 Listing VPCs in $aws_region"
         aws ec2 describe-vpcs --region $aws_region \
             | jq '.Vpcs[].VpcId'
         ;;
     iam)
-        echo "▣ Listing IAM Users (Global)"
+        echo "📊 Listing IAM Users (Global)"
         aws iam list-users \
             | jq -r '.Users[].UserName'
         ;;
     route53)
-        echo "▣ Listing Route53 Hosted Zones"
+        echo "📊 Listing Route53 Hosted Zones"
         aws route53 list-hosted-zones \
             | jq -r '.HostedZones[].Name'
         ;;
     cloudwatch)
-        echo "▣ Listing CloudWatch Alarms"
+        echo "📊 Listing CloudWatch Alarms"
         aws cloudwatch describe-alarms --region $aws_region \
             | jq -r '.CompositeAlarms[].AlarmName, .MetricAlarms[].AlarmName'
         ;;
     cloudformation)
-        echo "▣ Listing CloudFormation Stacks"
+        echo "📊 Listing CloudFormation Stacks"
         aws cloudformation describe-stacks --region $aws_region \
             | jq -r '.Stacks[].StackName'
         ;;
     lambda)
-        echo "▣ Listing Lambda Functions"
+        echo "📊 Listing Lambda Functions"
         aws lambda list-functions --region $aws_region \
             | jq -r '.Functions[].FunctionName'
         ;;
     sns)
-        echo "▣ Listing SNS Topics"
+        echo "📊 Listing SNS Topics"
         aws sns list-topics --region $aws_region \
             | jq -r '.Topics[].TopicArn'
         ;;
     sqs)
-        echo "▣ Listing SQS Queues"
+        echo "📊 Listing SQS Queues"
         aws sqs list-queues --region $aws_region \
             | jq -r '.QueueUrls[]'
         ;;
     dynamodb)
-        echo "▣ Listing DynamoDB Tables"
+        echo "📊 Listing DynamoDB Tables"
         aws dynamodb list-tables --region $aws_region \
             | jq -r '.TableNames[]'
         ;;
     ebs)
-        echo "▣ Listing EBS Volumes"
+        echo "📊 Listing EBS Volumes"
         aws ec2 describe-volumes --region $aws_region \
             | jq -r '.Volumes[].VolumeId'
         ;;
@@ -280,7 +280,7 @@ set +x
 
 ---
 
-## ** Step-by-Step Script Development** {#step-by-step}
+## Step-by-Step Script Development
 
 ### **Step 1: Basic Script Structure**
 ```bash
@@ -298,10 +298,10 @@ aws iam list-users           # Lists ALL IAM users
 
 ### **Step 2: Add User-Friendly Echo Statements**
 ```bash
-echo "▣ Print list of S3 buckets"
+echo "📊 Print list of S3 buckets"
 aws s3 ls
 
-echo "▣ Print list of EC2 instances"  
+echo "📊 Print list of EC2 instances"  
 aws ec2 describe-instances
 ```
 
@@ -314,7 +314,7 @@ set +x  # Disable debug
 
 **Sample Debug Output**:
 ```
-+ echo ▣ Print list of S3 buckets
++ echo 📊 Print list of S3 buckets
 + aws s3 ls
 2024-01-11  penguin-flew-away/
 ```
@@ -330,7 +330,7 @@ cat resource_report.txt | more
 
 ---
 
-## ** JQ Command Mastery** {#jq-mastery}
+## JQ Command Mastery
 
 ### **Definition**
 **JQ** = Command-line JSON processor (like `grep` + `awk` for JSON)
@@ -395,7 +395,7 @@ jq -r '.Name, .Id'
 
 ---
 
-## ** Cron Job Integration** {#cron-integration}
+## Cron Job Integration
 
 ### **Lab: Schedule Daily Report**
 ```bash
@@ -422,7 +422,7 @@ crontab -l
 
 ---
 
-## ** Interview Questions & Answers** {#interview-qa}
+## Interview Questions & Answers
 
 ### **Q1: Why do organizations migrate to cloud?**
 **Answer**: 
@@ -473,7 +473,7 @@ bash -x script.sh
 
 ---
 
-## ** Hands-on Lab Exercises** {#lab-exercises}
+## Hands-on Lab Exercises
 
 ### **Lab 1: Basic Script Test**
 ```bash
@@ -521,7 +521,7 @@ tail -f /tmp/test.log
 
 ---
 
-## ** Advanced Improvements** {#advanced}
+## Advanced Improvements
 
 ### **1. Multi-Region Support**
 ```bash
@@ -554,7 +554,7 @@ aws ce get-cost-and-usage --time-period Start=2024-01-01,End=2024-01-31
 
 ---
 
-## ** Assignment**
+## Assignment
 **Task**: Complete the full script and integrate with cron:
 1. ✓ Support all 14 services
 2. ✓ Add JQ parsing for clean output  
@@ -568,4 +568,4 @@ aws ce get-cost-and-usage --time-period Start=2024-01-01,End=2024-01-31
 
 ---
 
-**This project demonstrates**: AWS CLI + Bash + JQ + Cron + DevOps cost optimization mindset! 
+**This project demonstrates**: AWS CLI + Bash + JQ + Cron + DevOps cost optimization mindset!
